@@ -19,11 +19,15 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { PORT } = process.env;
+const PORT = process.env.PORT || 3002; // Cambiar el número del puerto a 3002
 
-// Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+try {
+  conn.sync({ force: false }).then(async () => {
+  console.log('DB connected')
   server.listen(PORT, () => {
-    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
-  });
+    console.log(`%s listening at ${PORT}`);
+  })
 });
+} catch (error) {
+    console.error('Error occurred during server start:', error);
+  }
