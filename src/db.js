@@ -9,22 +9,6 @@ const sequelize = new Sequelize(POSTGRES_URL, {
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 
-// const sequelize = new Sequelize({
-//   dialect: 'postgres',
-//   host: POSTGRES_HOST,
-//   database: POSTGRES_DATABASE,
-//   username: POSTGRES_USER,
-//   password: POSTGRES_PASSWORD,
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//       rejectUnauthorized: false, // Para que la conexión funcione en entornos de prueba como Vercel
-//     },
-//   },
-//   logging: false, // set to console.log to see the raw SQL queries
-//   native: false // lets Sequelize know we can use pg-native for ~30% more speed
-// });
-
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
